@@ -1,12 +1,13 @@
 import { View, Text,Image ,SafeAreaView,TouchableOpacity} from 'react-native'
 import React from 'react'
 import { welcomebg } from "../../constants";
-
+import { NavigationContainer, useNavigation} from '@react-navigation/native';
 import styles from "./welcome.style";
 
 
 
 const Welcome = () => {
+  const naviagation = useNavigation();
   return (
     <View style={styles.container}>
       <Image source={{ uri: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1679492046/AdminPhotos/welcomebg-Recovered_vbazqn.png' }} style={{ width: "100%", height: "100%", resizeMode: "cover" }} />
@@ -16,7 +17,7 @@ const Welcome = () => {
           <Text style={styles.smallheading}>Where every picture tells a story</Text>
           <Text style={styles.Bigheading}>Visuals hub</Text>
 
-          <TouchableOpacity style={{ justifyContent: "center", paddingTop: 500, left: 70 }}>
+          <TouchableOpacity onPress={() => {naviagation.navigate("Home")}} style={{ justifyContent: "center", paddingTop: 500, left: 70 }}>
             
           <View style={styles.btn}>  
           <Text style={{ color: "#EEE3EE" }}>Get started</Text>
