@@ -12,19 +12,28 @@ const styles = StyleSheet.create({
   },
   smallheading:{
     fontSize: SIZES.regular,
-    fontFamily: FONT.medium,
-    color: COLORS.primary,
+    marginTop:8,
+    fontFamily: FONT.regular,
+    textAlign:'center',
+    color: COLORS.tertiary,
+  },
+  smallheadingbtn:{
+    fontSize: SIZES.medium,
+    marginTop:8,
+    fontFamily: FONT.regular,
+    textAlign:'center',
+    color: COLORS.secondary,
   },
   Bigheading:{
     fontSize: SIZES.xxLarge,
     marginTop:10,
     fontFamily: FONT.bold,
-    color: COLORS.primary,
+    color: COLORS.tertiary,
   },
   
   btn:{
     backgroundColor: COLORS.primary,
-    padding: 15,
+    padding: 10,
     borderRadius: 5,
     width: "100%",
     alignItems: "center",
@@ -33,9 +42,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-    elevation: 10,
+   
   },
   
     imagestyle: {

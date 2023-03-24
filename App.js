@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import { Welcome ,Home} from './screens';
 import { useFonts } from "expo-font";
@@ -24,7 +25,7 @@ export default function App() {
 
 
   return (
-  
+    
     <NavigationContainer>
        <StatusBar translucent={true} />
       <Stack.Navigator screenOptions={{headerShown:false}}>
@@ -32,6 +33,11 @@ export default function App() {
         <Stack.Screen name="Home" component={Home}/>
       </Stack.Navigator>
     </NavigationContainer>
+
+
+    
+    /*IOS
+705366730311-ot2guoro995jl29siqgq87l1l8b7v01u.apps.googleusercontent.com*/
 
   );
 }

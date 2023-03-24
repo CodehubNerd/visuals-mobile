@@ -10,18 +10,19 @@ const Welcome = () => {
   const naviagation = useNavigation();
   return (
     <View style={styles.container}>
-      <Image source={{ uri: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1679492046/AdminPhotos/welcomebg-Recovered_vbazqn.png' }} style={{ width: "100%", height: "100%", resizeMode: "cover" }} />
       
-      <SafeAreaView style ={{position:"absolute", zIndex:10,top:0,left:30,bottom:0,alignItems:'center',justifyContent:"center"}} >
+      <SafeAreaView style ={{ marginTop:20}} >
         <View>
-          <Text style={styles.smallheading}>Where every picture tells a story</Text>
-          <Text style={styles.Bigheading}>Visuals hub</Text>
-
-          <TouchableOpacity onPress={() => {naviagation.navigate("Home")}} style={{ justifyContent: "center", paddingTop: 500, left: 70 }}>
-            
-          <View style={styles.btn}>  
-          <Text style={{ color: "#EEE3EE" }}>Get started</Text>
+        <Text style={styles.Bigheading}>Hey! Welcome</Text>
+          <Text style={styles.smallheading}>A platform where picture tells {'\n'}a story.</Text>
+          <View style = {{width:200,height:200 ,paddingTop:60}}>
+            <Image  source={{ uri: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1679687220/AdminPhotos/undraw_moments_0y20_1_fopiib.png' }} style={{ width: "100%", height: "100%",marginTop:15}} />
           </View>
+          <TouchableOpacity onPress={() => {naviagation.navigate("Home")}} style={{ justifyContent: "center", paddingTop: 70, }}>
+            
+            <View style ={styles.btn}>
+              <Text style={styles.smallheadingbtn}>Get Started</Text>
+             </View>
 
           </TouchableOpacity>
        </View>
