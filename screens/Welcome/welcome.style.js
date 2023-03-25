@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     padding: 10,
     borderRadius: 5,
+    alignItems: 'center',
+    justifyContent:"center",
     width: "100%",
     alignItems: "center",
     shadowColor: "#a3008b",
