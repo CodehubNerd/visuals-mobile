@@ -1,26 +1,23 @@
 // eslint-disable-next-line import/no-anonymous-default-export
+import {defineField, defineType} from 'sanity'
+
+
 export default defineType({
   name: 'user',
   title: 'User',
   type: 'document',
   fields: [
-    {
-      name: 'Email',
-      title: 'Email',
-      type: 'string',
-    },
-    {
+    defineField({
       name: 'userName',
       title: 'UserName',
       type: 'string',
-    },
-    {
-      name: 'password',
-      title: 'Password',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Image',
       type: 'string',
-    },
-
+    }),
   ],
-})
 
-
+}) 
+  

@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'visualshub',
 
-  projectId: 'bvmwz9f6',
+  projectId: 'nk0os96y',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],

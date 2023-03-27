@@ -6,4 +6,6 @@ import postedBy from './postedBy';
 import save from './save';
 
 
-export const createTypes = [pin, user, postedBy, comment, save]
+export const schemaTypes = [pin, user, postedBy, comment, save]
+
+
