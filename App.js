@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import { Welcome, Home, Login } from './screens';
+import { Welcome, Home, Login,Register } from './screens';
 import {images} from "./constants";
 import { ScreenHeaderBtn} from './componets';
 import { useFonts } from "expo-font";
@@ -34,6 +34,7 @@ export default function App() {
         <Stack.Screen name="Welcome" component={Welcome}/>
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
 
