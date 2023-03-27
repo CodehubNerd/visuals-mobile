@@ -1,4 +1,4 @@
-export default {
+export default defineType({
   name: 'save',
   title: 'Save',
   type: 'document',
@@ -14,5 +14,7 @@ export default {
       type: 'string',
     },
   ],
-};
+
+}) 
+
 
