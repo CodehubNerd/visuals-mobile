@@ -43,7 +43,7 @@ const Login = () => {
           onChangeText={setPassword}
         />
         <TouchableOpacity style={[styles.buttonContainer, { width: '100%' }]} onPress={() => {}}>
-          <Text style={[styles.button, { textAlign: 'center' }]}>Login</Text>
+          <Text style={[styles.button, { textAlign: 'center' }]}  onPress={() => {back.navigate("Home")}} >Login</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {naviagation.navigate("Register")}}>
         <Text style={{marginTop:6}}>Create account</Text>
