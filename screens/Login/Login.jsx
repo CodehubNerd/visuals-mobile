@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native'
 import { useNavigation} from '@react-navigation/native';
 import React, { useState } from 'react'
+import { AntDesign } from '@expo/vector-icons';
 import styles from "./login.style";
 
 const Login = () => {
@@ -13,7 +14,7 @@ const Login = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => {back.navigate("Welcome")}}>
-          <Image source={require('../../assets/back.png')} style={{ width: 20, height: 20 }} />
+        <AntDesign name="back" size={24} color="#091120" />
         </TouchableOpacity>
         <View style={{ flex: 1 }} />
         <Text style={styles.guest}>Guest</Text>

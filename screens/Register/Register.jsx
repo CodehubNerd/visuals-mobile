@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import { useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 import styles from "./register.style";
 
 const Register = () => {
@@ -13,8 +14,8 @@ const Register = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => {}}>
-          <Image source={require('../../assets/back.png')} style={{ width: 20, height: 20 }} />
+      <TouchableOpacity onPress={() => {back.navigate("Login")}}>
+        <AntDesign name="back" size={24} color="#091120" />
         </TouchableOpacity>
         <View style={{ flex: 1 }} />
         <Text style={styles.guest}></Text>
