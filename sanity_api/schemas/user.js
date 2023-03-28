@@ -13,10 +13,16 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
+      name: 'email',
+      title: 'Email',
       type: 'string',
     }),
+    defineField({
+      name: 'password',
+      title: 'Password',
+      type: 'string',
+    }),
+  
   ],
 
 }) 
