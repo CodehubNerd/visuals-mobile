@@ -16,7 +16,7 @@ export class Bottomnavigation extends Component {
   <TouchableOpacity style={styles.addIconContainer}>
     <MaterialIcons name="add" size={32} color="#fff" style={styles.addIcon} />
   </TouchableOpacity>
-  <Text style={styles.bottomNavText}>Add</Text>
+  <Text style={styles.bottomNavText}></Text>
 </View>
             
             

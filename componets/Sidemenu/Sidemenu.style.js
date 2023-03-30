@@ -4,34 +4,38 @@ import { COLORS, FONT, SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      flexDirection: 'row',
-      backgroundColor: '#fff',
       position: 'absolute',
       top: 0,
       left: 0,
-      right: 0,
-      bottom: 0,
+      width: '50%',
+      height: '100%',
+      backgroundColor: '#fff',
       zIndex: 999,
-    },
-    closeButton: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      padding: 10,
-    },
-    menuOptions: {
-      flex: 1,
-      backgroundColor: '#f0f0f0',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
       padding: 20,
     },
-    menuOption: {
-      padding: 10,
-      borderBottomWidth: 1,
-      borderBottomColor: '#ccc',
+    option: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 20,
     },
-    menuOptionText: {
-      fontSize: 18,
+    text: {
+        fontSize: SIZES.regular,
+        fontFamily: FONT.regular,
+        textAlign:'center',
+        color: COLORS.tertiary,
     },
-});
+    menuItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 15,
+        paddingHorizontal: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+      },
+      
+  });
   
 export default styles
