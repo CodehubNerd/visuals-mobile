@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native'
 import { useNavigation} from '@react-navigation/native';
 import React, { useState } from 'react'
+import {Bottomnavigation} from '../../componets'
 import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
 import styles from "./home.style";
 
@@ -30,7 +31,11 @@ const Home = () => {
         </View>
         
 
-    </View>
+      </View>
+      
+
+
+      <Bottomnavigation/>
   </SafeAreaView>
   
   )
