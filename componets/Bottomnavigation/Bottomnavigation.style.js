@@ -25,6 +25,22 @@ const styles = StyleSheet.create({
       color: '#091120b9',
       marginTop: 4,
     },
+    addIconContainer: {
+        position: 'absolute',
+        bottom: 0,
+        zIndex: 1,
+        backgroundColor: COLORS.primary,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 20,
+      
+      },
+      addIcon: {
+        padding: 10,
+      }
   });
   
 export default styles

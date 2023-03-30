@@ -10,11 +10,16 @@ export class Bottomnavigation extends Component {
         <TouchableOpacity style={styles.bottomNavItem}>
           <Ionicons name="person-outline" size={24} color="#091120b9" />
           <Text style={styles.bottomNavText}>Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomNavItem}>
-          <MaterialIcons name="add-box" size={24} color="#091120b9" />
-          <Text style={styles.bottomNavText}>Add</Text>
-        </TouchableOpacity>
+            </TouchableOpacity>
+            
+ <View style={styles.bottomNavItem}>
+  <TouchableOpacity style={styles.addIconContainer}>
+    <MaterialIcons name="add" size={32} color="#fff" style={styles.addIcon} />
+  </TouchableOpacity>
+  <Text style={styles.bottomNavText}>Add</Text>
+</View>
+            
+            
         <TouchableOpacity style={styles.bottomNavItem}>
           <Ionicons name="heart-outline" size={24} color="#091120b9" />
           <Text style={styles.bottomNavText}>Likes</Text>
