@@ -24,7 +24,7 @@ const Home = () => {
     <SafeAreaView style={[styles.homecontainer, { flex: 1 }]} >
       
 
-    <View style={styles.header}>
+    <View style={[styles.header]}>
     <TouchableOpacity onPress={handleMenuToggle}>
         <SimpleLineIcons style={{ backgroundColor: '#dee0e4b9', padding: 4, borderRadius: 4 }} name="menu" size={22} color="#091120b9" />
       </TouchableOpacity>
