@@ -1,5 +1,6 @@
-import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native'
-import { useNavigation} from '@react-navigation/native';
+import { View, Text, SafeAreaView, TextInput, Image,ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
+import MasonryList from '@react-native-seoul/masonry-list';
 import React, { useState } from 'react' 
 import {Bottomnavigation,Sidemenu,CategoryList} from '../../componets'
 import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
@@ -9,6 +10,7 @@ import styles from "./home.style";
 const Home = () => {
   const back = useNavigation();
   const [showMenu, setShowMenu] = useState(false); //add state to control the visibility of the menu
+  const [snaps, setSnaps] = useState(null);
 
   const handleMenuToggle = () => {
     setShowMenu(!showMenu); //toggle the value of showMenu when the user clicks the SimpleLineIcons button
@@ -39,7 +41,18 @@ const Home = () => {
       </View>
      
       <Text style={[styles.mediumTxt,{marginTop:20}]}>categories</Text>
-      <CategoryList/>
+      <CategoryList />
+
+      <ScrollView>
+        {snaps ? (
+          <></>) :( <>
+          <ActivityIndicator size={30} color={'#00A6A6'}/>
+        </>
+       )}
+    
+        
+      </ScrollView>
+
       
  {/* show/hide the SideMenu component based on the value of showMenu */}
  {showMenu && <Sidemenu onClose={handleMenuToggle} />}
