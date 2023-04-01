@@ -10,6 +10,16 @@ const styles = StyleSheet.create({
   
   
   },
+  masonryContainer: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
+  },
+  masonryImage: {
+    width: '100%',
+    height: 200,
+    marginBottom: 10,
+  },
+  
   homecontainer: {
     paddingHorizontal: 20,
     paddingVertical: 10,

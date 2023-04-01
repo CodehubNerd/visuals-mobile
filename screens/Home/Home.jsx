@@ -43,21 +43,31 @@ const Home = () => {
     <View style={styles.userSection}>
       <Text style={styles.welcomeText}>Hello, Masiko</Text>
         <Text style={styles.createMemoriesText}>Create your memories</Text>
-        
+    
       <View style={styles.searchBoxContainer}>
       <TextInput style={styles.searchBox} placeholder="Looking for?" />
       <TouchableOpacity style={styles.searchButton}>
       <Feather name="search" size={23} color="#fff" />
       </TouchableOpacity>
-      </View>
+        </View>
+        <CategoryList />
       </View>
      
-      <Text style={[styles.mediumTxt,{marginTop:20}]}>categories</Text>
-      <CategoryList />
+     
+     
 
-      <ScrollView>
-        {snaps ? (
-         <> </>) :( <>
+      <ScrollView style ={{padding:4}} >
+        {data ? (
+          <>
+          <MasonryList
+          data={data}
+          keyExtractor={(item)=> item.id}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => <CardItem data={item} />}
+          />
+          </>) : (
+          <>
           <ActivityIndicator size={30} color={'#00A6A6'}/>
         </>
        )}
@@ -76,5 +86,26 @@ const Home = () => {
   
   )
 }
+
+const CardItem = ({data}) => {
+  return (
+    <TouchableOpacity  style={{
+      margin: 1,
+      margin: 6,
+      borderRadius: 5, // Equivalent to rounded-md in Tailwind
+      position: 'relative',
+      overflow: 'hidden',
+      height: Math.round(Math.random() * 100 + 200),
+    }}
+    >
+     <Image source ={{uri : data.imageURL}}   style={{
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  }}  />  
+  </TouchableOpacity>
+)
+}
+
 
 export default Home;
