@@ -5,9 +5,9 @@ import { COLORS, FONT, SIZES } from "../../constants";
 
 const categories = [
   { name: 'Food', color: '#FFA07A', image: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1677916408/AdminPhotos/welcomebg_avpqob.jpg' },
-  { name: 'Travel', color: '#87CEFA', image: 'https://example.com/travel.png' },
-  { name: 'Fitness', color: '#90EE90', image: 'https://example.com/fitness.png' },
-  { name: 'Fashion', color: '#FFC0CB', image: 'https://example.com/fashion.png' },
+  { name: 'Travel', color: '#87CEFA', image: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1671099477/AdminPhotos/pexels-xxss-is-back-777001_mx9xnm.jpg' },
+  { name: 'Fitness', color: '#90EE90', image: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1668775007/AdminPhotos/pexels-anna-shvets-4482900_tnxutt.jpg' },
+  { name: 'Fashion', color: '#FFC0CB', image: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1668775360/AdminPhotos/pexels-fauxels-3184292_dj8m9e.jpg' },
   { name: 'Music', color: '#BA55D3', image: 'https://example.com/music.png' },
   { name: 'Fitnessp', color: '#90EE90', image: 'https://example.com/fitness.png' },
   { name: 'Fashionp', color: '#FFC0CB', image: 'https://example.com/fashion.png' },
