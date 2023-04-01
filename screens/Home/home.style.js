@@ -68,6 +68,11 @@ const styles = StyleSheet.create({
     fontFamily: FONT.bold,
     color: COLORS.tertiary,
   },
+  mediumTxt: {
+    fontSize: SIZES.large,
+    fontFamily: FONT.medium,
+    color: COLORS.tertiary,
+  },
   createMemoriesText: {
     fontSize: SIZES.regular,
     marginTop:8,

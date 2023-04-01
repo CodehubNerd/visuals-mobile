@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native'
 import { useNavigation} from '@react-navigation/native';
-import React, { useState } from 'react'
-import {Bottomnavigation,Sidemenu} from '../../componets'
+import React, { useState } from 'react' 
+import {Bottomnavigation,Sidemenu,CategoryList} from '../../componets'
 import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
 import styles from "./home.style";
 
@@ -24,7 +24,8 @@ const Home = () => {
       <View style={{ flex: 1 }} />
       <Image source={{ uri: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1666080054/AdminPhotos/20220903_112222_gq40jt.jpg' }} style={styles.image} />
       <View style={{ width: 20 }} />
-    </View>
+      </View>
+      
     <View style={styles.userSection}>
       <Text style={styles.welcomeText}>Hello, Masiko</Text>
         <Text style={styles.createMemoriesText}>Create your memories</Text>
@@ -32,12 +33,13 @@ const Home = () => {
       <View style={styles.searchBoxContainer}>
       <TextInput style={styles.searchBox} placeholder="Looking for?" />
       <TouchableOpacity style={styles.searchButton}>
-        <Feather name="search" size={23} color="#fff" />
+      <Feather name="search" size={23} color="#fff" />
       </TouchableOpacity>
-        </View>
-        
-
       </View>
+      </View>
+     
+      <Text style={[styles.mediumTxt,{marginTop:20}]}>categories</Text>
+      <CategoryList/>
       
  {/* show/hide the SideMenu component based on the value of showMenu */}
  {showMenu && <Sidemenu onClose={handleMenuToggle} />}

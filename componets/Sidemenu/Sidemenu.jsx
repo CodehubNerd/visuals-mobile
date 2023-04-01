@@ -7,6 +7,8 @@ import { AntDesign } from '@expo/vector-icons';
 const Sidemenu = ({ onClose }) => {
     return (
       <View style={styles.container}>
+      <Text >Settings</Text>
+
        <TouchableOpacity style={styles.menuItem} onPress={onClose}>
   <View style={{ flexDirection: 'row' }}>
     <AntDesign name="setting" size={24} color="#091120b9" />
