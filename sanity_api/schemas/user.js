@@ -22,6 +22,11 @@ export default defineType({
       title: 'Password',
       type: 'string',
     }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'string',
+    }),
   
   ],
 
