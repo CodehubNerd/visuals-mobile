@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, TextInput, Image,ScrollView, TouchableOpacity
 import MasonryList from '@react-native-seoul/masonry-list';
 import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
 const MasionaryLayout = ({data}) => {
   
@@ -17,7 +18,12 @@ const MasionaryLayout = ({data}) => {
   )
 }
 
-const CardItem = ({data}) => {
+const CardItem = ({ data }) => {
+  const navigation = useNavigation()
+
+  const handleClick = () => {
+    navigation.navigate('Detailts', { param: data.id })
+  }
     return (
       <TouchableOpacity  style={{
         margin: 1,
@@ -27,6 +33,7 @@ const CardItem = ({data}) => {
         overflow: 'hidden',
         height: Math.round(Math.random() * 100 + 200),
       }}
+        onPress = {handleClick}
       >
        <Image source ={{uri : data.imageURL}}   style={{
       width: '100%',

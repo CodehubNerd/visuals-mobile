@@ -6,9 +6,11 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginTop:50,
       alignItems: 'center',
-    
-    
     },
+    homecontainer: {
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+      },
   })
   
   export default styles
