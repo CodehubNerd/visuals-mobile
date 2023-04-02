@@ -30,10 +30,9 @@ const Detailts = ({ route }) => {
      
       {/*srcoll view of (misonary) images component*/}
      
-          <Text>{id}</Text>
+    <Text>{id}</Text>
 
-
-      <Bottomnavigation />
+    <Bottomnavigation />
       
   </SafeAreaView>
   )
