@@ -1,5 +1,8 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import { client } from '../../sanity'
+import * as ImagePicker from 'expo-image-picker';
+
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./register.style";
@@ -7,7 +10,25 @@ import styles from "./register.style";
 const Register = () => {
   const [email, setEmail] = useState('');
   const [username, setusername] = useState('');
-    const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('');
+  const [image, setImage] = useState(null);
+
+
+
+
+  //handle image upload
+  const handleImagePicker = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+  
     
     const naviagation = useNavigation();
 
@@ -24,6 +45,12 @@ const Register = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Create account</Text>
       
+  <TouchableOpacity style={styles.input} onPress={handleImagePicker}>
+  <Text style={styles.label}>Profile Image</Text>
+  {image && <Image source={{ uri: image }} style={styles.image} />}
+</TouchableOpacity>
+
+        
 
         <TextInput
           style={styles.input}
@@ -59,4 +86,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Register;
