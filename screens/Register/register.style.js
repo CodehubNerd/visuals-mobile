@@ -55,7 +55,60 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff'
-  }
+  },
+  imagePickerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  imagePickerIcon: {
+    marginRight: 12,
+    color: '#707070',
+  },
+  imagePickerButton: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+   
+    backgroundColor: '#F2F2F2',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imagePickerImage: {
+    width: '100%',
+    height: '100%',
+  },
+  imagePlaceholder: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    backgroundColor: '#ccc',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imageWrapper: {
+    width: 140,
+    height: 140,
+    borderRadius: 70,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  imagePickerImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  imagePickerIcon: {
+    position: 'absolute',
+    top: 40,
+    left: '50%',
+    marginLeft: -24,
+  },
+
+
+
+
 })
 
 export default styles

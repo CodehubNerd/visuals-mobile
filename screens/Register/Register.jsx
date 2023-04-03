@@ -13,30 +13,28 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [image, setImage] = useState(null);
 
-
-
-
   //handle image upload
+
+
   const handleImagePicker = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [1, 1],
       quality: 1,
     });
     if (!result.canceled) {
       setImage(result.assets[0].uri);
     }
   };
-  
-    
-    const naviagation = useNavigation();
+
+  const naviagation = useNavigation();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
-      <TouchableOpacity onPress={() => {back.navigate("Login")}}>
-        <AntDesign name="back" size={24} color="#091120" />
+        <TouchableOpacity onPress={() => {back.navigate("Login")}}>
+          <AntDesign name="back" size={24} color="#091120" />
         </TouchableOpacity>
         <View style={{ flex: 1 }} />
         <Text style={styles.guest}></Text>
@@ -44,14 +42,17 @@ const Register = () => {
       </View>
       <View style={styles.container}>
         <Text style={styles.title}>Create account</Text>
-      
-  <TouchableOpacity style={styles.input} onPress={handleImagePicker}>
-  <Text style={styles.label}>Profile Image</Text>
-  {image && <Image source={{ uri: image }} style={styles.image} />}
-</TouchableOpacity>
-
-        
-
+        <TouchableOpacity style={styles.imagePickerButton}  onPress={handleImagePicker}>
+          {image ?
+            <Image source={{ uri: image }} style={styles.imagePickerImage}/>
+            :
+            <View style={styles.imagePlaceholder}>
+            <View style={styles.imageWrapper}>
+             <AntDesign name="camerao" size={48} color="#7a7a7a" style={styles.imagePickerIcon} />
+            </View>
+           </View>
+          }
+        </TouchableOpacity>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -79,11 +80,12 @@ const Register = () => {
           <Text style={[styles.button, { textAlign: 'center' }]}>Register</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {naviagation.navigate("Login")}}>
-        <Text style={{marginTop:6}}>Already have an account</Text>
+          <Text style={{marginTop:6}}>Already have an account</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   )
 }
+
 
 export default Register;
