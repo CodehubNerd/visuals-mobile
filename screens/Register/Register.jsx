@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react'
 import  {client}  from '../../client'
 import * as ImagePicker from 'expo-image-picker';

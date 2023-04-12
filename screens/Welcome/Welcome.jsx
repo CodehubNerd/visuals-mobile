@@ -1,5 +1,5 @@
 import { View, Text,Image ,SafeAreaView,TouchableOpacity} from 'react-native'
-import React from 'react'
+import Reactzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz from 'react'
 import { welcomebg } from "../../constants";
 import { NavigationContainer, useNavigation} from '@react-navigation/native';
 import styles from "./welcome.style";

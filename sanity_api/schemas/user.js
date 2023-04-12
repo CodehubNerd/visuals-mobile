@@ -7,7 +7,7 @@ export default defineType({
   title: 'User',
   type: 'document',
   fields: [
-    defineField({``
+    defineField({
       name: 'username',
       title: 'UserName',
       type: 'string',
