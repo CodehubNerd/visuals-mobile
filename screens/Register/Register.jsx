@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react'
-import  {client}  from '../../client'
+
 import * as ImagePicker from 'expo-image-picker';
 
 import { useNavigation } from '@react-navigation/native';
@@ -31,40 +31,7 @@ const Register = () => {
 
   const navigation = useNavigation();
 
-  const handleRegister = async () => {
-    try {
-      // Upload image to Sanity.io
-      const imageAsset = null;
-      if (image) {
-        const imageData = await fetch(image.uri);
-        const buffer = await imageData.arrayBuffer();
-        const response = await client.assets.upload('image', new Uint8Array(buffer), {
-          filename: image.fileName || `user-${new Date().getTime()}.${image.type.split('/')[1]}`,
-        });
-        imageAsset = {
-          _type: 'image',
-          asset: {
-            _type: 'reference',
-            _ref: response._id,
-          },
-        };
-      }
 
-      // Create user document in Sanity.io
-      const response = await client.create({
-        _type: 'user',
-        email,
-        username,
-        password,
-        image: imageAsset,
-      });
-      console.log(response);
-      navigation.navigate('Login');
-    } catch (error) {
-      console.error(error);
-      // Handle registration error here
-    }
-  };
 
 
   return (
@@ -115,7 +82,7 @@ const Register = () => {
         />
      <TouchableOpacity
       style={[styles.buttonContainer, { width: '100%' }]}
-      onPress={handleRegister}
+      onPress={""}
     >
       <Text style={[styles.button, { textAlign: 'center' }]}>Register</Text>
     </TouchableOpacity>

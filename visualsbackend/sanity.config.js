@@ -5,9 +5,9 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'visualshub',
+  title: 'visuals_backend',
 
-  projectId: 'nk0os96y',
+  projectId: 'rrk2vc8o',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],
