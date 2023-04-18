@@ -1,13 +1,10 @@
-import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity, Platform } from 'react-native';
 import React, { useState } from 'react'
-
 import * as ImagePicker from 'expo-image-picker';
-
 import { useNavigation } from '@react-navigation/native';
-
-
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./register.style";
+import { client } from '../../sanity';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -25,14 +22,26 @@ const Register = () => {
     });
     
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      setImage(result.assets[0]);
     }
   };
 
   const navigation = useNavigation();
 
-
-
+  const handleRegister = async () => {
+    try {
+      const response = await client.create({
+        _type: 'user',
+        email,
+        username,
+        password,
+        image,
+      });
+      console.log('User data saved to Sanity:', response);
+    } catch (error) {
+      console.error('Failed to save user data to Sanity:', error.message);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -48,7 +57,10 @@ const Register = () => {
         <Text style={styles.title}>Create account</Text>
         <TouchableOpacity style={styles.imagePickerButton} onPress={handleImagePicker}>
           {image ? (
-            <Image source={{ uri: image }} style={styles.imagePickerImage} />
+            <Image
+              source={{ uri: Platform.OS === 'ios' ? image.uri.replace('file://', '') : image.uri }}
+              style={styles.imagePickerImage}
+            />
           ) : (
             <View style={styles.imagePlaceholder}>
               <View style={styles.imageWrapper}>
@@ -80,12 +92,12 @@ const Register = () => {
           value={password}
           onChangeText={setPassword}
         />
-     <TouchableOpacity
-      style={[styles.buttonContainer, { width: '100%' }]}
-      onPress={""}
-    >
-      <Text style={[styles.button, { textAlign: 'center' }]}>Register</Text>
-    </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.buttonContainer, { width: '100%' }]}
+          onPress={handleRegister}
+        >
+          <Text style={[styles.button, { textAlign: 'center' }]}>Register</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={{ marginTop: 6 }}>Already have an account</Text>
         </TouchableOpacity>

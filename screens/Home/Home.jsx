@@ -5,13 +5,22 @@ import React, { useState, useEffect } from 'react'
 import {Bottomnavigation,Sidemenu,CategoryList,MasionaryLayout} from '../../componets'
 import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
 import styles from "./home.style";
-import { getCategory } from '../../sanity';
+import { client } from '../../sanity';
 
 
 const Home = () => {
   const back = useNavigation();
   const [showMenu, setShowMenu] = useState(false); //add state to control the visibility of the menu
   const [snaps, setSnaps] = useState(null);
+
+
+  const getCategory = async () => {
+    const items = await client.fetch('*[_type == "category"]').then((data) => {
+        return data;
+    });
+    return items;
+};
+
 
   useEffect(() => {
     getCategory()
