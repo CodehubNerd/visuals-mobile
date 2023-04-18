@@ -37,6 +37,7 @@ const Register = () => {
         password,
         image,
       });
+      navigation.navigate('Login');
       console.log('User data saved to Sanity:', response);
     } catch (error) {
       console.error('Failed to save user data to Sanity:', error.message);
@@ -58,9 +59,11 @@ const Register = () => {
         <TouchableOpacity style={styles.imagePickerButton} onPress={handleImagePicker}>
           {image ? (
             <Image
-              source={{ uri: Platform.OS === 'ios' ? image.uri.replace('file://', '') : image.uri }}
-              style={styles.imagePickerImage}
-            />
+  source={{ uri: Platform.OS === 'ios' ? image.uri.replace('file://', '') : image.uri }}
+  style={styles.imagePickerImage}
+  resizeMode="cover"
+/>
+
           ) : (
             <View style={styles.imagePlaceholder}>
               <View style={styles.imageWrapper}>

@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'users',
@@ -21,13 +21,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-        name: 'image',
-        title: 'Image',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      }),
- 
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
 })
