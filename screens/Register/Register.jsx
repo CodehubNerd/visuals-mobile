@@ -8,7 +8,7 @@ import { client } from '../../sanity';
 
 const Register = () => {
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [image, setImage] = useState(null);
 
@@ -31,9 +31,9 @@ const Register = () => {
   const handleRegister = async () => {
     try {
       const response = await client.create({
-        _type: 'user',
+        _type: 'users',
         email,
-        username,
+        userName,
         password,
         image,
       });
@@ -81,8 +81,8 @@ const Register = () => {
           style={styles.input}
           placeholder="Username"
           autoCapitalize="none"
-          value={username}
-          onChangeText={setUsername}
+          value={userName}
+          onChangeText={setUserName}
         />
         <TextInput
           style={styles.input}
