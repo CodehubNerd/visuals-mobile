@@ -12,5 +12,7 @@ const builder = imageUrlBuilder(client)
 export const urlFor = (source) => builder.image(source);
 
 export const getCategory = async () => {
-    const items = await client.fetch('*[_type == ]')
+    const items = await client.fetch('*[_type == "category"]').then((data) => {
+        
+    })
 }
