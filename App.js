@@ -9,6 +9,12 @@ import { useFonts } from "expo-font";
 
 import { NavigationContainer, useNavigation} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import "react-native-url-polyfill/auto";
+const params = new URLSearchParams('?foo=bar&baz=qux');
+params.set('foo', 'baz');
+console.log(params.toString()); 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {

@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     getCategory()
       .then(data => console.log(data))
-      .catch((err) => alert(err));
+      .catch((err) => console.error(err));
   
   }, [])
   
