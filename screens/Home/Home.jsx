@@ -1,16 +1,25 @@
 import { View, Text, SafeAreaView, TextInput, Image,ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import MasonryList from '@react-native-seoul/masonry-list';
-import React, { useState } from 'react' 
+import React, { useState, useEffect } from 'react' 
 import {Bottomnavigation,Sidemenu,CategoryList,MasionaryLayout} from '../../componets'
 import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
 import styles from "./home.style";
+import { getCategory } from '../../sanity';
 
 
 const Home = () => {
   const back = useNavigation();
   const [showMenu, setShowMenu] = useState(false); //add state to control the visibility of the menu
   const [snaps, setSnaps] = useState(null);
+
+  useEffect(() => {
+    getCategory()
+      .then(data => console.log(data))
+      .catch((err) => alert(err));
+  
+  }, [])
+  
 
   const data = [
     {id:1,name : 'Reading', imageURL : 'https://cdn.pixabay.com/photo/2023/03/25/17/35/girl-7876505_960_720.jpg'},
