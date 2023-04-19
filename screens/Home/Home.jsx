@@ -10,7 +10,7 @@ import { client } from '../../sanity';
 
 const Home = () => {
   const back = useNavigation();
-  const [showMenu, setShowMenu] = useState(false); //add state to control the visibility of the menu
+  const [showMenu, setShowMenu] = useState(false); 
   const [snaps, setSnaps] = useState(null);
 
 

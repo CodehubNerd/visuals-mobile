@@ -1,30 +1,19 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react'
-import { client } from '../../sanity';
+import React, { useContext, useState } from 'react';
+
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./login.style";
+import { AuthContext } from '../../context/AuthContextProvider';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
   const navigation = useNavigation();
 
-  const handleLogin = async () => {
-    // Perform authentication with Sanity API
-    const query = `*[_type == "users" && email == $email && password == $password][0]`;
-    const params = { email, password };
-    try {
-      const result = await client.fetch(query, params);
-      if (result) {
-        navigation.navigate('Home');
-      } else {
-        Alert.alert('Invalid credentials', 'Please enter a valid email and password');
-      }
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Error', 'An error occurred while logging in');
-    }
+  const handleLogin = () => {
+    login(email, password);
   };
 
   return (
@@ -34,7 +23,10 @@ const Login = () => {
           <AntDesign name="back" size={24} color="#091120" />
         </TouchableOpacity>
         <View style={{ flex: 1 }} />
+        <TouchableOpacity onPress={() => {  navigation.navigate('Home')}}>
         <Text style={styles.guest}>Guest</Text>
+        </TouchableOpacity>
+       
         <View style={{ width: 20 }} />
       </View>
       <View style={styles.container}>

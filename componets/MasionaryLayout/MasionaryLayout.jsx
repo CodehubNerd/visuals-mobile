@@ -1,6 +1,5 @@
-import { View, Text, SafeAreaView, TextInput, Image,ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { Image,TouchableOpacity } from 'react-native'
 import MasonryList from '@react-native-seoul/masonry-list';
-import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 

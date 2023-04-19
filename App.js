@@ -1,13 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AuthProvider } from './context/AuthContextProvider';
+
 
 import { Welcome, Home, Login,Register,Detailts } from './screens';
-import {images} from "./constants";
-import { ScreenHeaderBtn} from './componets';
 import { useFonts } from "expo-font";
 
 
-import { NavigationContainer, useNavigation} from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import "react-native-url-polyfill/auto";
@@ -35,7 +34,8 @@ export default function App() {
   return (
     
     <NavigationContainer>
-       <StatusBar translucent={true} />
+      <StatusBar translucent={true} />
+      <AuthProvider>
       <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name="Welcome" component={Welcome}/>
         <Stack.Screen name="Home" component={Home}/>
@@ -43,6 +43,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Detailts" component={Detailts} />
       </Stack.Navigator>
+      </AuthProvider>
     </NavigationContainer>
 
   );
