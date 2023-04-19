@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const query = `*[_type == "users" && email == $email && password == $password][0]{
-      username,
+      userName,
       "image": image.asset->url
     }`;
     const params = { email, password };

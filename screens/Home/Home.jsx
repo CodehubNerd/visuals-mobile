@@ -1,7 +1,8 @@
 import { View, Text, SafeAreaView, TextInput, Image,ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../context/AuthContextProvider';
 import MasonryList from '@react-native-seoul/masonry-list';
-import React, { useState, useEffect } from 'react' 
+import React, { useState, useEffect,useContext } from 'react' 
 import {Bottomnavigation,Sidemenu,CategoryList,MasionaryLayout} from '../../componets'
 import { SimpleLineIcons ,Feather  } from '@expo/vector-icons'; 
 import styles from "./home.style";
@@ -12,7 +13,36 @@ const Home = () => {
   const back = useNavigation();
   const [showMenu, setShowMenu] = useState(false); 
   const [snaps, setSnaps] = useState(null);
+  const { user } = useContext(AuthContext);
+  const { userName, image } = user;
 
+
+  const handleImageError = () => {
+    if (image) {
+      return (
+        <Image
+          source={{ uri: image }}
+          style={styles.image}
+        />
+      );
+    }
+    return (
+      <View
+        style={{
+        width: 35,
+        height: 35,
+        borderRadius:80,
+          backgroundColor: "#ccc",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+  <View style={styles.circle}>
+  <Text style={styles.text}>{userName[0].toUpperCase()}</Text>
+</View>
+      </View>
+    );
+  };
 
   const getCategory = async () => {
     const items = await client.fetch('*[_type == "category"]').then((data) => {
@@ -57,12 +87,19 @@ const Home = () => {
         <SimpleLineIcons style={{ backgroundColor: '#dee0e4b9', padding: 4, borderRadius: 4 }} name="menu" size={22} color="#091120b9" />
       </TouchableOpacity>
       <View style={{ flex: 1 }} />
-      <Image source={{ uri: 'https://res.cloudinary.com/dbb4s7ej0/image/upload/v1666080054/AdminPhotos/20220903_112222_gq40jt.jpg' }} style={styles.image} />
+      {image ? (
+        <Image
+          source={{ uri: image }}
+          style={{ width: 200, height: 200, borderRadius: 100 }}
+        />
+      ) : (
+        handleImageError()
+      )}
       <View style={{ width: 20 }} />
       </View>
       
     <View style={styles.userSection}>
-      <Text style={styles.welcomeText}>Hello, Masiko</Text>
+      <Text style={styles.welcomeText}>Hello, {userName}</Text>
         <Text style={styles.createMemoriesText}>Create your memories</Text>
     
       <View style={styles.searchBoxContainer}>

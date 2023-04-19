@@ -14,6 +14,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingBottom: 20,
   },
+
+
+  circle: {
+    width: 35,
+    height: 35,
+    borderRadius: 60,
+    backgroundColor: "#009fe3",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 23,
+    fontWeight: "bold",
+    color: "#000",
+    textTransform: "uppercase",
+  },
+
   masonryImage: {
     width: '100%',
     height: 200,
