@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 23,
-    fontWeight: "bold",
-    color: "#000",
+    fontFamily: FONT.bold,
+    color: "#e8e1ef",
     textTransform: "uppercase",
   },
 
