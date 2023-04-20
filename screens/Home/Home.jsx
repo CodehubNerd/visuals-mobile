@@ -9,6 +9,7 @@ import styles from "./home.style";
 import { client } from '../../sanity';
 
 
+
 const Home = () => {
   const back = useNavigation();
 
