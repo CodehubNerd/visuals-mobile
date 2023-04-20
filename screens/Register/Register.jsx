@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, TextInput, Image, TouchableOpacity, Platform } from 'react-native';
 import React, { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker';
-import { useNavigation } from '@react-navigation/native';
+
 import { AntDesign } from '@expo/vector-icons';
 import styles from "./register.style";
 import { client } from '../../sanity';

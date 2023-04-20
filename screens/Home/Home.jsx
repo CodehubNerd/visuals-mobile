@@ -11,6 +11,7 @@ import { client } from '../../sanity';
 
 const Home = () => {
   const back = useNavigation();
+
   const [showMenu, setShowMenu] = useState(false); 
   const [snaps, setSnaps] = useState(null);
   const { user } = useContext(AuthContext);
