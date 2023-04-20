@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     marginTop:25
   },
   welcomeText: {
-    fontSize: SIZES.xxLarge,
+    fontSize: SIZES.large,
     fontFamily: FONT.bold,
     color: COLORS.tertiary,
   },

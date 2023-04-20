@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { AuthProvider } from './context/AuthContextProvider';
 
 
-import { Welcome, Home, Login,Register,Detailts } from './screens';
+import { Welcome, Home, Login,Register,Detailts,Addvisual } from './screens';
 import { useFonts } from "expo-font";
 
 
@@ -42,6 +42,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Detailts" component={Detailts} />
+        <Stack.Screen name="Addvisual" component={Addvisual} />
       </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>
