@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons,Feather ,EvilIcons } from '@expo/vector-icons';
+
 import * as MediaLibrary from 'expo-media-library';
 
 const AddVisual = () => {
@@ -32,11 +33,11 @@ const AddVisual = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity>
-          <Ionicons name="ios-close" size={40} color="black" />
+        <EvilIcons name="close-o" size={30} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerText}>New Post</Text>
+        <Text style={styles.headerText}>New visual</Text>
         <TouchableOpacity>
-          <Text style={{ color: 'blue' }}>Share</Text>
+        <Feather name="send" size={24} color="black" />
         </TouchableOpacity>
       </View>
 
@@ -64,14 +65,16 @@ const AddVisual = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+        flex: 1,
+        paddingTop: 40,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    marginTop: 20,
+    marginTop: 30,
+    marginBottom: 30,
   },
   headerText: {
     fontSize: 20,

@@ -4,48 +4,49 @@ import { COLORS, FONT, SIZES } from "../../constants";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop:40,
-    },
-    header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-      marginTop: 20,
-    },
-    headerText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-    imagePickerContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#EAEAEA',
-    },
-    selectedImage: {
-      width: '100%',
-      height: '100%',
-    },
-    selectImageText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: 'gray',
-    },
-    galleryContainer: {
-      flex: 2,
-      paddingTop: 10,
-      paddingHorizontal: 20,
-    },
-    galleryTitle: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      marginBottom: 10,
-    },
-    galleryImage: {
-      width: 70,
-      height: 70,
-      marginRight: 10,
-    },
-  });
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        borderBottomColor: '#ccc',
+        borderBottomWidth: 1,
+        width: '100%',
+      },
+      headerText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+      },
+      cancelButton: {
+        fontSize: 16,
+        color: 'red',
+      },
+      imageWrapper: {
+        marginVertical: 20,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      image: {
+        width: '100%',
+        height: 200,
+      },
+      galleryWrapper: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        paddingHorizontal: 5,
+      },
+      galleryImage: {
+        width: '32%',
+        height: 100,
+        marginBottom: 5,
+      },
+})
+  
   export default styles
