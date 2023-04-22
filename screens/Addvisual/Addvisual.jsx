@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native';
-import { Ionicons,Feather ,EvilIcons } from '@expo/vector-icons';
+import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList, TextInput } from 'react-native';
+import { Ionicons, Feather, EvilIcons } from '@expo/vector-icons';
 
+import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 
 const AddVisual = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState([]);
+  const [description, setDescription] = useState('');
+  const [categories, setCategories] = useState([
+    'Nature',
+    'Food',
+    'Travel',
+    'Art',
+    'Fashion',
+    'Sports',
+  ]);
 
   useEffect(() => {
     (async () => {
@@ -19,55 +29,189 @@ const AddVisual = () => {
     })();
   }, []);
 
-  const handleImageSelection = (image) => {
-    setSelectedImage(image);
+  const handleImageSelection = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync();
+
+    if (!result.canceled) {
+      setSelectedImage(result.uri);
+    }
   };
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => handleImageSelection(item)}>
-      <Image source={{ uri: item.uri }} style={styles.galleryImage} />
-    </TouchableOpacity>
+  const handleCameraSelection = async () => {
+    let result = await ImagePicker.launchCameraAsync();
+
+    if (!result.canceled) {
+      setSelectedImage(result.uri);
+    }
+  };
+
+  const handleSave = () => {
+    console.log('Image URI:', selectedImage);
+    console.log('Description:', description);
+    // Add logic to save the image and description to the database
+  };
+
+  const renderItem = ({ item, index  }) => (
+  
+<TouchableOpacity
+    onPress={() => {
+      const newCategories = [...categories];
+      newCategories[index].selected = !newCategories[index].selected;
+      setCategories(newCategories);
+    }}
+    style={[styles.categoryContainer, item.selected && styles.selectedCategory]}
+  >
+    <Text style={[styles.categoryText, item.selected && styles.selectedCategoryText]}>
+      {item.name}
+    </Text>
+  </TouchableOpacity>
+    
+    
+    
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
-        <EvilIcons name="close-o" size={30} color="black" />
+        <TouchableOpacity onPress={() => setSelectedImage(null)}>
+          <EvilIcons name="close-o" size={30} color="black" />
         </TouchableOpacity>
         <Text style={styles.headerText}>New visual</Text>
-        <TouchableOpacity>
-        <Feather name="send" size={24} color="black" />
+        <TouchableOpacity onPress={handleSave}>
+          <Feather name="send" size={24} color="black" />
         </TouchableOpacity>
       </View>
 
       <View style={styles.imagePickerContainer}>
         {selectedImage ? (
-          <Image source={{ uri: selectedImage.uri }} style={styles.selectedImage} />
+          <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
         ) : (
-          <Text style={styles.selectImageText}>No image selected</Text>
+          <TouchableOpacity style={styles.selectImageButton} onPress={handleImageSelection}>
+            <Feather name="image" size={30} color="gray" />
+            <Text style={styles.selectImageText}>Choose an image from gallery</Text>
+          </TouchableOpacity>
         )}
       </View>
 
-      <View style={styles.galleryContainer}>
-        <Text style={styles.galleryTitle}>Gallery</Text>
-        <FlatList
-          data={galleryImages}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
+      <View style={styles.cameraContainer}>
+        <TouchableOpacity style={styles.cameraButton} onPress={handleCameraSelection}>
+          <Ionicons name="camera-outline" size={35} color="white" />
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.descriptionContainer}>
+        <TextInput
+          style={styles.descriptionInput}
+          placeholder="Title"
+          onChangeText={(text) => setDescription(text)}
+          value={description}
+          multiline
+          numberOfLines={1}
+        />
+        <TextInput
+          style={styles.descriptionInput}
+          placeholder="Write a description..."
+          onChangeText={(text) => setDescription(text)}
+          value={description}
+          multiline
+          numberOfLines={4}
         />
       </View>
+
+      <View style={styles.galleryContainer}>
+  
+  <Text style={styles.galleryTitle}>Categories</Text>
+  <FlatList
+    data={categories}
+    renderItem={({ item }) => (
+      <TouchableOpacity style={styles.categoryItem}>
+        <Text style={styles.categoryText}>{item}</Text>
+      </TouchableOpacity>
+    )}
+    keyExtractor={(item) => item}
+    horizontal
+    showsHorizontalScrollIndicator={false}
+  />
+</View>
+
     </View>
   );
 };
-
+export default AddVisual;
 const styles = StyleSheet.create({
   container: {
-        flex: 1,
-        paddingTop: 40,
+    flex: 1,
+    paddingTop: 40,
   },
+  categoryItem: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 20,
+    padding: 10,
+    marginRight: 10,
+  },
+  categoryText: {
+    color: '#666',
+    fontWeight: 'bold',
+  },
+  
+  categoryContainer: {
+    backgroundColor: '#ddd',
+    padding: 10,
+    borderRadius: 10,
+    marginRight: 10,
+  },
+  categoryText: {
+    fontSize: 16,
+  },
+  selectedCategory: {
+    backgroundColor: '#4CAF50',
+  },
+  selectedCategoryText: {
+    color: '#fff',
+  },
+  
+
+  imagePickerContainer: {
+    flex: 1,
+    resizeMode: 'contain',
+    backgroundImage: 'url("https://res.cloudinary.com/dbb4s7ej0/image/upload/v1682159771/OIP_4_npttu8.jpg")',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#EAEAEA',
+  },
+  selectImageButton: {
+    alignItems: 'center',
+  },
+  selectImageText: {
+    fontSize: 18,
+    color: 'gray',
+    marginTop: 10,
+  },
+  selectedImage: {
+    width: '100%',
+   
+    height: '100%',
+  },
+  cameraContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  cameraButton: {
+    backgroundColor: '#00A6A6',
+    borderRadius: 50,
+    padding: 10,
+  },
+  descriptionContainer: {
+    backgroundColor: '#EAEAEA',
+    padding: 10,
+    marginHorizontal: 20,
+    borderRadius: 10,
+  },
+  descriptionInput: {
+    fontSize: 18,
+  },
+
+
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -110,6 +254,146 @@ const styles = StyleSheet.create({
     height: 70,
     marginRight: 10,
   },
+  imageInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    marginBottom: 20,
+  },
+  descriptionInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    marginBottom: 20,
+    height: 100,
+    textAlignVertical: 'top',
+  },
+  cameraButton: {
+    backgroundColor: '#007AFF',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 20,
+  },
+  cameraButtonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  addButton: {
+    backgroundColor: '#007AFF',
+    padding: 10,
+    borderRadius: 5,
+  },
+  addButtonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    paddingTop: 50,
+    paddingBottom: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  headerText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  imagePickerContainer: {
+    width: '100%',
+    height: 300,
+    backgroundColor: '#f2f2f2',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  selectedImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
+  selectImageButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  selectImageText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 10,
+  },
+  cameraContainer: {
+    marginTop: 20,
+    backgroundColor: '#00A6A6',
+    padding: 10,
+    borderRadius: 50,
+  },
+  cameraButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 60,
+    height: 60,
+  },
+  descriptionContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  descriptionInput: {
+    fontSize: 16,
+    minHeight: 50,
+  },
+  galleryContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    backgroundColor: '#fff',
+  },
+  galleryTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  galleryImage: {
+    width: 100,
+    height: 100,
+    marginRight: 10,
+  },
+  categoryContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    backgroundColor: '#fff',
+  },
+  categoryTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  categoryItem: {
+    backgroundColor: '#f2f2f2',
+    padding: 10,
+    borderRadius: 20,
+    marginRight: 10,
+    marginBottom: 10,
+  },
+  categoryItemText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
-
-export default AddVisual;
