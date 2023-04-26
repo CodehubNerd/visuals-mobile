@@ -166,11 +166,11 @@ const styles = StyleSheet.create({
   selectedCategory: {
     backgroundColor: '#4CAF50',
   },
+
   selectedCategoryText: {
     color: '#fff',
   },
   
-
   imagePickerContainer: {
     flex: 1,
     resizeMode: 'contain',
