@@ -122,13 +122,16 @@ const Home = () => {
       <ScrollView style={{ padding: 4 }} showsVerticalScrollIndicator={false}>
   {data ? (
     <>
-    <MasionaryLayout  data= {data}/>
+            <MasionaryLayout data={data} />
+        
     </>
   ) : (
     <>
       <ActivityIndicator size={30} color={"#00A6A6"} />
     </>
-  )}
+        )}
+       
+       
 </ScrollView>
 
       

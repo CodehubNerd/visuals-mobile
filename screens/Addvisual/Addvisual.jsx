@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { Ionicons, Feather, EvilIcons } from '@expo/vector-icons';
 
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 
+
+
+const categories = [
+  { name: 'Category 1', value: 'category1' },
+  { name: 'Category 2', value: 'category2' },
+  { name: 'Category 3', value: 'category3' },
+  { name: 'Category 4', value: 'category4' },
+];
+
 const AddVisual = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState([]);
   const [description, setDescription] = useState('');
-  const [categories, setCategories] = useState([
-    'Nature',
-    'Food',
-    'Travel',
-    'Art',
-    'Fashion',
-    'Sports',
-  ]);
+  
+  const [selectedCategory, setSelectedCategory] = useState(categories[0].value);
+
+  const handleCategoryChange = (value) => {
+    setSelectedCategory(value);
+  };
 
   useEffect(() => {
     (async () => {
@@ -51,27 +59,13 @@ const AddVisual = () => {
     // Add logic to save the image and description to the database
   };
 
-  const renderItem = ({ item, index  }) => (
-  
-<TouchableOpacity
-    onPress={() => {
-      const newCategories = [...categories];
-      newCategories[index].selected = !newCategories[index].selected;
-      setCategories(newCategories);
-    }}
-    style={[styles.categoryContainer, item.selected && styles.selectedCategory]}
-  >
-    <Text style={[styles.categoryText, item.selected && styles.selectedCategoryText]}>
-      {item.name}
-    </Text>
-  </TouchableOpacity>
-    
-    
-    
-  );
+
+
+
 
   return (
     <View style={styles.container}>
+      
       <View style={styles.header}>
         <TouchableOpacity onPress={() => setSelectedImage(null)}>
           <EvilIcons name="close-o" size={30} color="black" />
@@ -81,6 +75,7 @@ const AddVisual = () => {
           <Feather name="send" size={24} color="black" />
         </TouchableOpacity>
       </View>
+      
 
       <View style={styles.imagePickerContainer}>
         {selectedImage ? (
@@ -118,21 +113,23 @@ const AddVisual = () => {
         />
       </View>
 
-      <View style={styles.galleryContainer}>
-  
-  <Text style={styles.galleryTitle}>Categories</Text>
-  <FlatList
-    data={categories}
-    renderItem={({ item }) => (
-      <TouchableOpacity style={styles.categoryItem}>
-        <Text style={styles.categoryText}>{item}</Text>
-      </TouchableOpacity>
-    )}
-    keyExtractor={(item) => item}
-    horizontal
-    showsHorizontalScrollIndicator={false}
-  />
-</View>
+        <Text style={styles.galleryTitle}>Categories</Text>
+        
+  <Picker
+  style={{ width: '100%' }}
+  selectedValue={selectedCategory}
+  onValueChange={handleCategoryChange}
+   >
+  {categories.map((category) => (
+    <Picker.Item
+      key={category.value}
+      label={category.name}
+      value={category.value}
+    />
+  ))}
+    </Picker>
+        
+
 
     </View>
   );
@@ -246,7 +243,9 @@ const styles = StyleSheet.create({
   },
   galleryTitle: {
     fontSize: 20,
+    paddingHorizontal: 20,
     fontWeight: 'bold',
+
     marginBottom: 10,
   },
   galleryImage: {
