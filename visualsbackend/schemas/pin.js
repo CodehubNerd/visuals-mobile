@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'items',
-  title: 'Items',
+  name: 'pin',
+  title: 'Pin',
   type: 'document',
   fields: [
     defineField({
@@ -20,8 +20,7 @@ export default defineType({
     defineField({
       name: 'category',
       title: 'Category',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      type: 'string',
     }),
 
     defineField({
@@ -31,6 +30,28 @@ export default defineType({
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'userId',
+      title: 'UserId',
+      type: 'string',
+    }),
+    defineField({
+      name: 'postedBy',
+      title: 'PostedBy',
+      type: 'postedBy',
+    }),
+    defineField({
+      name: 'save',
+      title: 'Save',
+      type: 'array',
+      of: [{ type: 'save' }],
+    }),
+    defineField({
+      name: 'comments',
+      title: 'Comments',
+      type: 'array',
+      of: [{ type: 'comment' }],
     }),
   ],
 })

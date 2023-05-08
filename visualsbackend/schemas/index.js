@@ -1,9 +1,9 @@
 
-import items from './items'
-import category from './category'
+import pin from './pin'
 import users from './users'
 import save from './save'
 import postedBy from './postedBy'
+import comment from './comment'
 
 
-export const schemaTypes = [items,category,users,save,postedBy]
+export const schemaTypes = [pin,users,save,postedBy,comment]
