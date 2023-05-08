@@ -1,4 +1,4 @@
-import { Image,TouchableOpacity } from 'react-native'
+import { Image,TouchableOpacity ,Text, View} from 'react-native'
 import MasonryList from '@react-native-seoul/masonry-list';
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
@@ -19,12 +19,18 @@ const MasionaryLayout = ({data}) => {
 
 const CardItem = ({ data }) => {
   const navigation = useNavigation()
+  
 
   const handleClick = () => {
     navigation.navigate('Detailts', { param: data.id })
   }
-    return (
-      <TouchableOpacity  style={{
+
+
+
+  
+  return (
+      <>
+       <TouchableOpacity  style={{
         margin: 1,
         margin: 6,
         borderRadius: 5, 
@@ -38,8 +44,20 @@ const CardItem = ({ data }) => {
       width: '100%',
       height: '100%',
       resizeMode: 'cover',
-    }}  />  
-    </TouchableOpacity>
+        }} />  
+       
+      </TouchableOpacity>
+      <View style={{ marginLeft: 6 }}>
+        <View>
+          <Image/>
+        </View>
+        <View>
+        <Text >jonh maffy</Text>
+        </View>
+       
+      </View>
+      </>
+     
   )
   }
 export default MasionaryLayout;

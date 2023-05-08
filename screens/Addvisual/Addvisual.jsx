@@ -2,18 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Ionicons, Feather, EvilIcons } from '@expo/vector-icons';
+import { categories } from '../../utils/data';
 
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 
 
 
-const categories = [
-  { name: 'Category 1', value: 'category1' },
-  { name: 'Category 2', value: 'category2' },
-  { name: 'Category 3', value: 'category3' },
-  { name: 'Category 4', value: 'category4' },
-];
+
 
 const AddVisual = () => {
   const [selectedImage, setSelectedImage] = useState(null);
