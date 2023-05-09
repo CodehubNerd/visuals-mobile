@@ -40,6 +40,7 @@ const Home = () => {
         }}
       >
   <View style={styles.circle}>
+    
   <Text style={styles.text}>{userName[0].toUpperCase()}</Text>
 </View>
       </View>
