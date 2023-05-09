@@ -18,6 +18,7 @@ const Login = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+    
       <View style={styles.header}>
         <TouchableOpacity onPress={() => { navigation.goBack() }}>
           <AntDesign name="back" size={24} color="#091120" />
